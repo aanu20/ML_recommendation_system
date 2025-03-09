@@ -7,7 +7,7 @@ import os
 
 def train_mood_model():
     # Load the preprocessed Twitter dataset
-    file_path = os.path.abspath(r'Multi-domain-recommendation/data/processed_data/preprocessed_twitter_dataset.csv')
+    file_path = os.path.abspath(r'ML_recommendation_system/data/processed_data/preprocessed_twitter_dataset.csv')
     print("Loading dataset from:", file_path)
 
     if os.path.exists(file_path):
@@ -20,10 +20,10 @@ def train_mood_model():
     y = twitter_data['mood']  # Target (mood: Happy, Sad, Neutral)
 
     # Split the dataset into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=22)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Train the mood model
-    mood_model = RandomForestClassifier(random_state=22)
+    mood_model = RandomForestClassifier(random_state=42)
     mood_model.fit(X_train, y_train)
 
     # Evaluate the model
@@ -31,7 +31,7 @@ def train_mood_model():
     print(f"Mood Model Accuracy: {accuracy:.2f}")
 
     # Save the model to a .pkl file
-    output_path = os.path.abspath(r'Multi-domain-recommendation\Models\mood_model.pkl')
+    output_path = os.path.abspath(r'ML_recommendation_system\Models\mood_model.pkl')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)  # Create directory if it doesn't exist
     joblib.dump(mood_model, output_path)
     print(f"Mood model saved to {output_path}")

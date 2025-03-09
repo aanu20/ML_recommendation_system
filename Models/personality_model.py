@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 import joblib
 
 # Load the preprocessed MBTI dataset
-mbti_data = pd.read_csv(r'Multi-domain-recommendation\data\processed_data\preprocessed_mbti_dataset.csv')
+mbti_data = pd.read_csv(r'ML_recommendation_system\data\processed_data\preprocessed_mbti_dataset.csv')
 
 # Features and target
 X = mbti_data[['Introversion Score', 'Sensing Score', 'Thinking Score', 'Judging Score']]
@@ -23,5 +23,5 @@ accuracy = personality_model.score(X_test, y_test)
 print(f"Model Accuracy: {accuracy:.2f}")
 
 # Save the model to a .pkl file
-joblib.dump(personality_model, r'Multi-domain-recommendation\Models\personality_model.pkl')
+joblib.dump(personality_model, r'ML_recommendation_system\Models\personality_model.pkl')
 print("Personality model saved to personality_model.pkl")

@@ -7,7 +7,7 @@ import os
 
 
 # Load MBTI dataset
-mbti_data = pd.read_csv(r'Multi-domain-recommendation\data\MBTI_dataset.csv')
+mbti_data = pd.read_csv(r'ML_recommendation_system\data\MBTI_dataset.csv')
 
 # Drop unnecessary columns
 mbti_data = mbti_data.drop(columns=["Gender", "Education", "Age"])
@@ -19,7 +19,7 @@ scaler = MinMaxScaler()
 numeric_columns = ['Introversion Score', 'Sensing Score', 'Thinking Score', 'Judging Score']
 mbti_data[numeric_columns] = scaler.fit_transform(mbti_data[numeric_columns])
 
-mbti_data.to_csv(r'Multi-domain-recommendation\data\processed_data\preprocessed_mbti_dataset.csv', index=False)
+mbti_data.to_csv(r'ML_recommendation_system\data\processed_data\preprocessed_mbti_dataset.csv', index=False)
 print("MBTI dataset preprocessed and saved.")
 
 
@@ -51,7 +51,7 @@ def classify_mood(sentiment_score):
         return 'Neutral'
 
 # Load Twitter dataset
-twitter_data = pd.read_csv(r'Multi-domain-recommendation\data\twitter_MBTI.csv')
+twitter_data = pd.read_csv(r'ML_recommendation_system\data\twitter_MBTI.csv')
 twitter_data = twitter_data.drop(columns=["Unnamed: 0"])
 twitter_data.rename(columns={"label": "Personality"}, inplace=True)
 # Handle missing or invalid values in the 'text' column
@@ -69,12 +69,12 @@ twitter_data['mood'] = twitter_data['sentiment'].apply(classify_mood)
 
 twitter_data['Personality'] = twitter_data['Personality'].str.upper()
 # Save preprocessed Twitter dataset
-twitter_data.to_csv(r'Multi-domain-recommendation\data\processed_data\preprocessed_twitter_dataset.csv', index=False)
+twitter_data.to_csv(r'ML_recommendation_system\data\processed_data\preprocessed_twitter_dataset.csv', index=False)
 print("Twitter dataset preprocessed and saved.")
 
-twitter_data = pd.read_csv(r'Multi-domain-recommendation\data\processed_data\preprocessed_twitter_dataset.csv')
+twitter_data = pd.read_csv(r'ML_recommendation_system\data\processed_data\preprocessed_twitter_dataset.csv')
 print(twitter_data.head())
 
-books_dataset=pd.read_csv(r"Multi-domain-recommendation\data\books.csv")
+books_dataset=pd.read_csv(r"ML_recommendation_system\data\books.csv")
 books_dataset=books_dataset.dropna()
-books_dataset.to_csv(r"Multi-domain-recommendation\data\processed_data\preprocessed_books.csv")
+books_dataset.to_csv(r"ML_recommendation_system\data\processed_data\preprocessed_books.csv")

@@ -75,11 +75,11 @@ def recommend_books(personality, mood, books_data):
 # Example usage
 if __name__ == '__main__':
     # Load the books dataset
-    books_data = pd.read_csv(r'Multi-domain-recommendation\data\processed_data\preprocessed_books.csv')
+    books_data = pd.read_csv(r'ML_recommendation_system\data\processed_data\preprocessed_books.csv')
 
     # Example input
     personality = 'INTJ'
-    mood = 'Happy'
+    mood = 'Neutral'
 
     # Get recommended books
     recommended_books = recommend_books(personality, mood, books_data)
