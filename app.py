@@ -1,15 +1,15 @@
 import joblib
 from textblob import TextBlob
-from recommendation.books_recommendation import recommend_books
+from books_recommendation.books_recommendation import recommend_books
 import pandas as pd
 
 def main():
     # Load models
-    personality_model = joblib.load(r'Multi-domain-recommendation/Models/personality_model.pkl')
-    mood_model = joblib.load(r'Multi-domain-recommendation/Models/mood_model.pkl')
+    personality_model = joblib.load(r'ML_recommendation_system/Models/personality_model.pkl')
+    mood_model = joblib.load(r'ML_recommendation_system/Models/mood_model.pkl')
 
     # Load books dataset
-    books_data = pd.read_csv(r'Multi-domain-recommendation/data/processed_data/preprocessed_books.csv')
+    books_data = pd.read_csv(r'ML_recommendation_system/data/processed_data/preprocessed_books.csv')
 
     # Example user data
     user_data = {
@@ -17,7 +17,7 @@ def main():
         'Sensing Score': 0.2,
         'Thinking Score': 0.8,
         'Judging Score': 0.4,
-        'text': "normal!"
+        'text': "feel good today !"
     }
 
     # Predict Personality
